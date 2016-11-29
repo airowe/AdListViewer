@@ -14,6 +14,8 @@ import java.util.List;
 
 /**
  * Created by ARo on 11/25/2016.
+ * AdTitlesFragment used to show Ad data on the main screen in a ListView.
+ * The Product Thumbnail is shown on the left side of the LinearLayout with the Product Name and Rating on the right
  */
 
 public class AdTitlesFragment extends Fragment implements AdapterView.OnItemClickListener
@@ -36,12 +38,19 @@ public class AdTitlesFragment extends Fragment implements AdapterView.OnItemClic
         return rootView;
     }
 
+    /**
+     * Populate Custom ArrayAdapter with the Ads List
+     */
     private void populateAdsList()
     {
         adsListAdapter = new AdsListAdapter(getContext(), adsList);
         adsListView.setAdapter(adsListAdapter);
     }
 
+    /**
+     * Launch Ad Details Fragment when item is clicked.
+     * Pass Parcelable Ad to fragment via Bundle
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id)
     {

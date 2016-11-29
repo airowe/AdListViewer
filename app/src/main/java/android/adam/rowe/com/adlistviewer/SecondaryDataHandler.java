@@ -8,9 +8,10 @@ import java.util.List;
 
 /**
  * Created by ARo on 11/22/2016.
+ * DefaultHandler implementation to parse XML data
  */
 
-public class SecondaryDataHandler extends DefaultHandler
+class SecondaryDataHandler extends DefaultHandler
 {
     private List<Ad> adsList;
 
@@ -50,9 +51,9 @@ public class SecondaryDataHandler extends DefaultHandler
     private String productDescription;
     private int productId;
 
-    int counter = 0;
+    private int counter = 0;
 
-    public SecondaryDataHandler(List<Ad> adsList)
+    SecondaryDataHandler(List<Ad> adsList)
     {
         this.adsList = adsList;
     }

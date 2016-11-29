@@ -20,6 +20,8 @@ import java.lang.reflect.Field;
 
 /**
  * Created by ARo on 11/25/2016.
+ * AdDetailsFragment used to display the detailed information about each Ad. Launched from individual List Items
+ * in the AdTitlesFragment
  */
 
 public class AdDetailsFragment extends Fragment
@@ -45,12 +47,21 @@ public class AdDetailsFragment extends Fragment
         populateTable();
     }
 
+    /**
+     * Populate the table with the Ad Details data passed in from the AdTitles Fragment
+     * Use reflection to iterate through Ad's fields to parse through data and display it in a Table Layout
+     * For text fields, display in TextViews. For ImageViews, use Glide's API to display a thumbnail of the image
+     */
     private void populateTable()
     {
         TableRow.LayoutParams firstColumnLayoutParams = new TableRow.LayoutParams(0, TableRow.LayoutParams.MATCH_PARENT, 0.25f);
         TableRow.LayoutParams secondColumnLayoutParams = new TableRow.LayoutParams(1, TableRow.LayoutParams.WRAP_CONTENT, 0.75f);
         Class<?> objClass = ad.getClass();
 
+        /**
+         * Use Reflection to iterate through the Ad's field
+         * Ignore fields for Parcelable
+         */
         Field[] fields = objClass.getFields();
         for(Field field : fields)
         {

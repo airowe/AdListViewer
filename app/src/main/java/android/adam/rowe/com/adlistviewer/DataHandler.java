@@ -9,9 +9,10 @@ import java.util.List;
 
 /**
  * Created by ARo on 11/22/2016.
+ * DefaultHandler implementation to parse XML data
  */
 
-public class DataHandler extends DefaultHandler
+class DataHandler extends DefaultHandler
 {
     private ArrayList<Ad> adsList = new ArrayList<>();
     private boolean productNameElement = false;
@@ -51,7 +52,7 @@ public class DataHandler extends DefaultHandler
         }
     }
 
-    public ArrayList<Ad> getAdsList()
+    ArrayList<Ad> getAdsList()
     {
         return adsList;
     }

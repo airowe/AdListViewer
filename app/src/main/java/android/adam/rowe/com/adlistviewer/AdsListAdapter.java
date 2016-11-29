@@ -17,19 +17,21 @@ import java.util.List;
 
 /**
  * Created by ARo on 11/25/2016.
+ * Custom ArrayAdapter to show main Ad information
+ * Uses ViewHolder Design Pattern for optimum performance and memory management
  */
 
-public class AdsListAdapter extends ArrayAdapter<Ad>
+class AdsListAdapter extends ArrayAdapter<Ad>
 {
     private List<Ad> adsList;
 
-    public AdsListAdapter(Context context, List<Ad> adsList)
+    AdsListAdapter(Context context, List<Ad> adsList)
     {
         super(context, R.layout.ad_item);
         this.adsList = adsList;
     }
 
-    private class ViewHolder
+    private static class ViewHolder
     {
         ImageView imageView;
         TextView adNameTextView;

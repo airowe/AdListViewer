@@ -15,6 +15,9 @@ import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
+/**
+ * MainActivity for the Application. Parses the XML and displays the initial fragment in the main content area
+ */
 public class MainActivity extends AppCompatActivity
 {
     private static final String adsUrl = "http://ads.appia.com/getAds?id=236&password=OVUJ1DJN&siteId=4288&deviceId=4230&sessionId=techtestsession&totalCampaignsRequested=10&lname=rowe";
@@ -23,8 +26,6 @@ public class MainActivity extends AppCompatActivity
     private SecondaryDataHandler secondaryDataHandler;
     private ArrayList<Ad> adsList;
 
-    //private boolean tabletMode = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -32,8 +33,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         asyncHttpClient = new AsyncHttpClient();
-
-        //tabletMode = getResources().getBoolean(R.bool.tablet_mode);
     }
 
     @Override
@@ -44,6 +43,11 @@ public class MainActivity extends AppCompatActivity
         getXML();
     }
 
+    /**
+     * Asynchronous call to get XML data from server and parse it into a List using a SAX parser
+     * Once the first parse is complete and the main data has been parsed, a second call is made to
+     * parse the rest of the data for the second screen while the first screen is shown
+     */
     private void getXML()
     {
         asyncHttpClient.get(adsUrl, new SaxAsyncHttpResponseHandler<DataHandler>(dataHandler)
@@ -66,6 +70,9 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
+    /**
+     * Instantiate a new AdTitlesFragment, pass a ParcelableArrayList of the Ads to it via Bundle
+     */
     private void showTitlesFragment()
     {
         AdTitlesFragment adTitlesFragment = new AdTitlesFragment();
